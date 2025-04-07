@@ -19,14 +19,6 @@ type FormData = {
   message: string;
 };
 
-type Field = {
-  name: keyof FormData; // ✅ type-safe key
-  label: string;
-  type?: string;
-  isTextarea?: boolean;
-};
-
-
 export default function HomePage() {
   const [form, setForm] = useState<FormData>({
     rank: "",
@@ -92,7 +84,7 @@ export default function HomePage() {
     }
   };
 
-  const fields: Field[] = [
+  const fields = [
     { name: 'team_1', label: 'Team 1' },
     { name: 'team_2', label: 'Team 2' },
     { name: 'name', label: 'Your Name' },
@@ -105,7 +97,7 @@ export default function HomePage() {
     { name: 'win_teams', label: 'Winning Teams' },
     { name: 'rank', label: 'Rank' },
     { name: 'email', label: 'Email Address', type: 'email' },
-    { name: 'subject', label: 'Subject' , isTextarea: false },
+    { name: 'subject', label: 'Subject', isTextarea: false },
   ];
 
   return (
@@ -138,7 +130,7 @@ export default function HomePage() {
                   type={field.type || "text"}
                   name={field.name}
                   id={field.name}
-                  value={form[field.name]}
+                  value={form[field.name as keyof FormData]}
                   onChange={handleChange}
                   className="w-full p-3 border-2 border-purple-300 bg-yellow-50 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
                   required

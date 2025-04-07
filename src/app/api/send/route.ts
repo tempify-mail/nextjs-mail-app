@@ -55,23 +55,25 @@ export async function POST(req: NextRequest) {
   });
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    host: process.env.SMTP_HOST || "smtp.hostinger.com",
     port: 465,
     secure: true,
     auth: {
-      user: process.env.SMTP_USER || "wasemahmmd@gmail.com",
-      pass: process.env.SMTP_PASSWORD || "srnf srwj kmgv selr",
+      user: process.env.SMTP_USER || "fantasysports@emaildream11.com",
+      pass: process.env.SMTP_PASSWORD || "Qyops7712b@",
     },
   });
 
+  const sender = "fantasysports@emaildream11.com"
+
   try {
     await transporter.sendMail({
-      from: `Drean11 Fantasy Sports . ${process.env.MAIL_USER}`,
+      from: `Drean11 Fantasy Sports . ${sender}`,
       to: email,
       subject: `You Champion! You're a winner in  ${team_1} vs ${team_2}`,
       html,
     });
+    
 
     return NextResponse.json({ success: true });
   } catch (error) {
