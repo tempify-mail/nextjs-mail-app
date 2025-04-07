@@ -119,7 +119,7 @@ export default function HomePage() {
                 <textarea
                   name={field.name}
                   id={field.name}
-                  value={(form as any)[field.name]}
+                  value={form[field.name as keyof FormData]}
                   onChange={handleChange}
                   rows={4}
                   className="w-full p-3 border-2 border-purple-300 bg-yellow-50 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
