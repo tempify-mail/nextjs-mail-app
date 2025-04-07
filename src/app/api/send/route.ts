@@ -5,6 +5,7 @@ import { renderEmail } from "../../utils/renderEmail";
 
 export async function POST(req: NextRequest) {
   const {
+    date,
     name,
     email,
     subject,
@@ -42,6 +43,7 @@ export async function POST(req: NextRequest) {
   }
 
   const html = await renderEmail("full", {
+    date,
     team_1,
     team_2,
     rank,
