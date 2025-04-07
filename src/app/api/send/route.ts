@@ -42,6 +42,8 @@ export async function POST(req: NextRequest) {
   }
 
   const html = await renderEmail("full", {
+    team_1,
+    team_2,
     rank,
     win_teams,
     entry,

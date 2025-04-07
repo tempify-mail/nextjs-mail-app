@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 type FormData = {
+  date: string;
   rank: string;
   win_teams: string;
   entry: string;
@@ -21,6 +22,7 @@ type FormData = {
 
 export default function HomePage() {
   const [form, setForm] = useState<FormData>({
+    date: "",
     rank: "",
     win_teams: "",
     entry: "",
@@ -60,6 +62,7 @@ export default function HomePage() {
       if (res.ok) {
         setStatus("Mail sent successfully!");
         setForm({
+          date: "",
           rank: "",
           win_teams: "",
           entry: "",
@@ -91,13 +94,14 @@ export default function HomePage() {
     { name: 'id', label: 'ID' },
     { name: 'contest', label: 'Contest' },
     { name: 'prices', label: 'Prices' },
+    { name: 'date', label: 'date' },
     { name: 'prize_pool', label: 'Prize Pool' },
     { name: 'spots', label: 'Spots' },
     { name: 'entry', label: 'Entry' },
     { name: 'win_teams', label: 'Winning Teams' },
     { name: 'rank', label: 'Rank' },
     { name: 'email', label: 'Email Address', type: 'email' },
-    { name: 'subject', label: 'Subject', isTextarea: false },
+    { name: 'subject', label: 'Subject', isTextarea: false  },
   ];
 
   return (
